@@ -4,12 +4,10 @@ from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.naive_bayes import MultinomialNB
 
 def message_rating(message):
-    
-
     df = pd.read_csv('spam_messages.csv')
-#if there is an error, with a line number given, this means that one of the added lines are incorrect. 
+#if there is an error, with a line number given, this means that one of the added lines are incorrect. sometimes, it can be caused by a line not being added as a new line, but following an old one, or simply because of some comma..
 
-    messages = pd.DataFrame(df, columns=['rating', 'message'])
+    messages = pd.DataFrame(data = df, columns=['rating', 'message'])
 
     message_train = messages['message']
     rating_train = messages['rating']
@@ -42,9 +40,9 @@ def message_rating(message):
 #I removed the spam update program. I'll put later to see if it works on Android:
 #If we export as APK, then we must export the database of spam messages for Bayes.
 
-    return str(return_statement), final_arg
+    return [str(return_statement), final_arg]
 
-print(message_rating("FBI, OPEN UP! You are being sentenced for 10 years in prison for robbery and burglary. To help plead your case, you may contact us at 1 800 0230 and we may come in help."))
+print(message_rating("why"))
 
 # #--------------------- Version on gspread, to use, just uncomment using ctrl+/
     #     # from sklearn.feature_extraction.text import CountVectorizer
@@ -165,4 +163,4 @@ print(message_rating("FBI, OPEN UP! You are being sentenced for 10 years in pris
     # #If we export as APK, then we must export the database of spam messages for Bayes.
     #     return [str(return_statement), final_arg]
 
-    # print(message_rating("FBI, OPEN UP! You are being sentenced for 10 years in prison for ro
+    # print(message_rating("FBI, OPEN UP! You are being sentenced for 10 years in prison for robbery and burglary. To help plead your case, you may contact us at 1 800 0230 and we may come in help."))
