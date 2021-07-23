@@ -27,15 +27,15 @@
 #--------------------
 
 #we already see that this is much faster...
-import pandas 
+import pandas as pd
 
-def search_number()
+def search_number(number_we_are_looking_for):
     data = pd.open_csv("unwanted_calls")
-    df = pd.DataFrame(data, columns = ["number"])
+    df = pd.DataFrame(data, columns = ["number", "frequence"])
 
     if df[df.number == number_we_are_looking_for].empty == False:
     #this means that there is a value that has the search value    
-        return True
+        return df.number
     return 
 
 # print(search_number(10))
