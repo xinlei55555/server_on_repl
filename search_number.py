@@ -92,7 +92,7 @@ def search_number(number_we_are_looking_for):
 #if no value are in the database, return a frequence of 0
     return 0
 
-print(search_number(0))
+#print(search_number(0))
 
 
 # if df[df.number == number_we_are_looking_for].empty == False:
