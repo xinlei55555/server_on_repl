@@ -67,12 +67,14 @@ def search_number(number_we_are_looking_for):
     # print(value)
     # #>>> returns false
 
+
 #this gives us the last valid_index()
     upper = int(data.last_valid_index())
     down = 0
 
 #THE WEIRD THING WITH THAT is that it skips the first and last value, like it doesn't take them into account, that's why i purposefully placed very random numbers at first and last
-    while upper > down:
+    #AAAA the reason is cuz i have to make the algorithm take upper > and = to down!!!
+    while upper >= down:
         #the // is for floor division
         middle = (upper + down ) // 2
         if int(data.iloc[middle, 0]) == number_we_are_looking_for:
@@ -90,7 +92,7 @@ def search_number(number_we_are_looking_for):
 #if no value are in the database, return a frequence of 0
     return 0
 
-#print(search_number(1999999990))
+print(search_number(0))
 
 
 # if df[df.number == number_we_are_looking_for].empty == False:
