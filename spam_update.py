@@ -40,9 +40,9 @@
 from csv import writer
 import pandas as pd
 
-messages = pd.read_csv('spam.csv')
+# messages = pd.read_csv('spam.csv')
 #messages = pd.DataFrame(df, columns=['rating', 'message'])
-print(messages)
+#print(messages)
 
 def append_list_as_row(file_name, list_of_elem):
   with open(file_name, 'a+', newline='') as write_obj:
@@ -55,19 +55,18 @@ def append_list_as_row(file_name, list_of_elem):
 
 def spam_update(message, analysed_rating):
   if str(analysed_rating) == 'spam':
-    append_list_as_row('spam.csv', ['ham', message + ',,,'])
+    append_list_as_row('spam_messages.csv', ['ham', message + ',,,'])
 
   else:
-    append_list_as_row('spam.csv', ['spam', message + ',,,'])
+    append_list_as_row('spam_messages.csv', ['spam', message + ',,,'])
   print("successfully added message and corrected error")
 
 def add_message(message, verdict):
   if str(verdict) == 'spam':
-    append_list_as_row('spam.csv', ['spam', message + ',,,'])
+    append_list_as_row('spam_messages.csv', ['spam', message + ',,,'])
 
   else:
-    append_list_as_row('spam.csv', ['ham', message + ',,,'])
+    append_list_as_row('spam_messages.csv', ['ham', message + ',,,'])
   print("successfully added message")
 
-
-add_message("Hello, here is FBI, we have a few questions concerning your son. Indeed, he owes the government some money and has refused to surrender", "spam")
+add_message("Hello, this is the FBI calling to inform you that you have been arrested", "spam")
