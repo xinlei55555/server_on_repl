@@ -68,4 +68,4 @@ def add_message(message, verdict):
     append_list_as_row('spam_messages.csv', ['ham', message + ',,,'])
   print("successfully added message")
 
-add_message("Hello, this is the FBI calling to inform you that you have been arrested", "spam")
+#add_message('Hello, this is the FBI calling to inform you that you have been arrested', "spam")

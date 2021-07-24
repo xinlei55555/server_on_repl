@@ -42,7 +42,7 @@ def message_rating(message):
 
     return [str(return_statement), final_arg]
 
-print(message_rating("why"))
+#print(message_rating("why"))
 
 # #--------------------- Version on gspread, to use, just uncomment using ctrl+/
     #     # from sklearn.feature_extraction.text import CountVectorizer
