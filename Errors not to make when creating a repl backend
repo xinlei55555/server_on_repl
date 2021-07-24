@@ -1,0 +1,7 @@
+1. Do not push the requirements.txt file, as it may conflict with repl.it's automatic package management system
+2. MAKE SURE THE LANGUAGE SELECTED (When importing a github repo or just pushing files) is correct! (bash is not the same thing as python!)
+3. always create a file that is called .replit that contains:
+    run  = "python <here_we_would_put_the_first_file_that_we_want_to_run.py>"
+    language = "python3"
+
+5. The rest is pretty straight forward and repl.it manages it pretty wel
