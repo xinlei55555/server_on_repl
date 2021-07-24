@@ -21,10 +21,14 @@ from sms_testing import message_rating
 
 app = Flask(__name__)
 
+#running this thing on repl: https://docs.replit.com/tutorials/06-github-and-run-button
+  #The .replit file as well as what is inside is SUPER IMPORTANT!!!
+
 @app.route("/")
 def home():
-  data = {"title": "HELOOO"}
-  return jsonify(data)
+  return 'title: HELOOOO'
+  # data = {"title": "HELOOO"}
+  # return jsonify(data)
 
 #this gives the location of the phonenumber passed in the url as well as the rating of the phonenumber
 @app.route("/phonenumber") #take number as variable
@@ -91,4 +95,5 @@ def phonenumber_add():
   #   return jsonify(console)
 
 if __name__ == "__main__":
-  app.run()
+#this line is quite important!!!
+  app.run(host='0.0.0.0', port=8080)
