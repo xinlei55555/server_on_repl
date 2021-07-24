@@ -205,9 +205,10 @@ def add_num(number):
     print(df.iloc[middle], middle)    
 
 #inserting using csv instead of pandas, cuz yea, i hate pandas
-    #to get the index in the csv file, you add +2 to the index that is given in pandas (cuz pandas skips the header and starts at 0)
+    #https://stackoverflow.com/questions/50701023/insert-new-line-in-csv-at-second-row-via-python
     toAdd = [number, 1]
     index = middle +2
+    #to get the index in the csv file, you add +2 to the index that is given in pandas (cuz pandas skips the header and starts at 0)
 
     with open('unwanted_calls.csv', "r") as infile:
         reader = list(csv.reader(infile))
