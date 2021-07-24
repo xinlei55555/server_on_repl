@@ -5,6 +5,7 @@ import pandas as pd
 from search_number import search_number
 
 def call_location(number):
+    number = str(number)
     if '+' in number:
         num = number
     else:

@@ -4,4 +4,4 @@
     run  = "python <here_we_would_put_the_first_file_that_we_want_to_run.py>"
     language = "python3"
 
-5. The rest is pretty straight forward and repl.it manages it pretty wel
+5. The rest is pretty straight forward and repl.it manages it pretty well.
