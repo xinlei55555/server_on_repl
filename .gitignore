@@ -1,4 +1,6 @@
-D:\Random_Docs\CODES_EXPOSCIENCES\AAA\Back_end_good\1. VersionOfTheBackEndOnRepl\repl_env
-D:\Random_Docs\CODES_EXPOSCIENCES\AAA\Back_end_good\1. VersionOfTheBackEndOnRepl\requirements.txt
-D:\Random_Docs\CODES_EXPOSCIENCES\AAA\Back_end_good\1. VersionOfTheBackEndOnRepl\__pycache__
-D:\Random_Docs\CODES_EXPOSCIENCES\AAA\Back_end_good\1. VersionOfTheBackEndOnRepl\Errors not to make next time you create a repl server
+repl_env/
+Error_when_creating_repl_server.txt
+requirements.txt
+poetry.lock
+pyproject.toml
+
