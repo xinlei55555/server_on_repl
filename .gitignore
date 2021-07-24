@@ -4,3 +4,4 @@ requirements.txt
 poetry.lock
 pyproject.toml
 .replit
+__pycache__/
