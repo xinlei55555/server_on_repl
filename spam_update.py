@@ -59,7 +59,7 @@ def delete_message(message):
     df = df[df.message != message]
 
 #this should replace the spam_messages.csv file with the new dataframe
-    df.to_csv(FILENAME)
+    df.to_csv(FILENAME,index = False )
     
 
 def spam_update(message, analysed_rating):
