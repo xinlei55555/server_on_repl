@@ -33,18 +33,45 @@ def home():
 #this gives the location of the phonenumber passed in the url as well as the rating of the phonenumber
 @app.route("/phonenumber") #take number as variable
 def send_number():
+  code = 0
   number = request.args.get('number') #between () is name of variable
   result = call_location(number)    #call location returns a list with title being result, rating being ham, spam or empty string
   print(result)
-  send_number = {'title': result[0], 'rating': result[1]}
+  if result[1] == 'spam':
+    code = 2
+  elif result[1] == 'ham':
+    code = 1
+  else:
+    code = 0
+    
+  send_number = {'message_num': result[0], 'rating_num': code}
   return jsonify(send_number)
 
 #this gives the rating of the message that was passed (spam or ham)
 @app.route("/message")
 def send_message():
+  code_num = 0
+  code_sms = 0
   sms = request.args.get('sms')
-  result = message_rating(sms)
-  send_message = {'title': result[0], 'rating': result[1]}
+  number = request.args.get('number')
+  result_num = call_location(number) 
+  result_sms = message_rating(sms)
+
+  if result_num[1] == 'spam':
+    code_num = 2
+  elif result_num[1] == 'ham':
+    code_num = 1
+  else:
+    code_num = 0
+
+  if result_sms[1] == 'spam':
+    code_sms = 2
+  elif result_sms[1] == 'ham':
+    code_sms = 1
+  else:
+    code_sms = 0
+
+  send_message = {'message_num': result_num[0], 'rating_num': code_num, 'message_sms': result_sms[0], 'rating_sms': code_sms}
   return jsonify(send_message)
 
 #this should be used to add a message if the app got the prediction right
