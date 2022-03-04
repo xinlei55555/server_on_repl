@@ -37,35 +37,48 @@
   # #Test message:
 
 #------------------------ version, when we use csv
-from csv import writer
+
+import csv
 import pandas as pd
 
-# messages = pd.read_csv('spam.csv')
-#messages = pd.DataFrame(df, columns=['rating', 'message'])
-#print(messages)
+FILENAME = "spam_messages.csv"
 
 def append_list_as_row(file_name, list_of_elem):
-  with open(file_name, 'a+', newline='') as write_obj:
-        # Create a writer object from csv module
-    csv_writer = writer(write_obj)
+    with open(file_name, 'a+', newline='') as write_obj:
+            # Create a writer object from csv module
+        csv_writer = csv.DictReader(f)
+        writer(write_obj)
 
-        # Add contents of list as last row in the csv file
-    csv_writer.writerow(list_of_elem)
+            # Add contents of list as last row in the csv file
+        csv_writer.writerow(list_of_elem)
+
+def delete_message(message):
+    df = pd.read_csv("spam_messages.csv")
+    
+    #this line basically recreated a new dataframe, by using all tha value EXCEPT the row that had the value of message
+    df = df[df.message != message]
+
+#this should replace the spam_messages.csv file with the new dataframe
+    df.to_csv(FILENAME)
+    
 
 def spam_update(message, analysed_rating):
-  if str(analysed_rating) == 'spam':
-    append_list_as_row('spam_messages.csv', ['ham', message + ',,,'])
+    #this will remoeve the old message that appeared before
+    delete_message(message)
 
-  else:
-    append_list_as_row('spam_messages.csv', ['spam', message + ',,,'])
-  print("successfully added message and corrected error")
+    if str(analysed_rating) == 'spam':
+        append_list_as_row(FILENAME, ['ham', message])
+
+    else:
+        append_list_as_row(FILENAME, ['spam', message])
+    print("successfully added message and corrected error")
 
 def add_message(message, verdict):
-  if str(verdict) == 'spam':
-    append_list_as_row('spam_messages.csv', ['spam', message + ',,,'])
+    if str(verdict) == 'spam':
+        append_list_as_row(FILENAME, ['spam', message])
 
-  else:
-    append_list_as_row('spam_messages.csv', ['ham', message + ',,,'])
-  print("successfully added message")
+    else:
+        append_list_as_row(FILENAME, ['ham', message])
+    print("successfully added message")
 
-#add_message('Hello, this is the FBI calling to inform you that you have been arrested', "spam")
+delete_message("Ahhh")
