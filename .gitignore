@@ -5,3 +5,5 @@ poetry.lock
 pyproject.toml
 .replit
 __pycache__/
+tempCodeRunnerFile.py
+translating_database.py

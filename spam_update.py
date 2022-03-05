@@ -42,12 +42,12 @@ import csv
 import pandas as pd
 
 FILENAME = "spam_messages.csv"
+df = pd.read_csv(FILENAME)
 
 def append_list_as_row(file_name, list_of_elem):
     with open(file_name, 'a+', newline='') as write_obj:
             # Create a writer object from csv module
-        csv_writer = csv.DictReader(f)
-        writer(write_obj)
+        csv_writer = csv.writer(write_obj)
 
             # Add contents of list as last row in the csv file
         csv_writer.writerow(list_of_elem)
@@ -63,7 +63,7 @@ def delete_message(message):
     
 
 def spam_update(message, analysed_rating):
-    #this will remoeve the old message that appeared before
+    #this will remove the old message that appeared before
     delete_message(message)
 
     if str(analysed_rating) == 'spam':
@@ -74,11 +74,19 @@ def spam_update(message, analysed_rating):
     print("successfully added message and corrected error")
 
 def add_message(message, verdict):
-    if str(verdict) == 'spam':
-        append_list_as_row(FILENAME, ['spam', message])
+    #this creates another dataframe that says if the value is in the database
+    exists = df['message'].str.contains(message, case = False)
+
+    #if the value is not in the database, it will add it
+    if True not in exists:
+        if str(verdict) == 'spam':
+            append_list_as_row(FILENAME, ['spam', message])
+
+        else:
+            append_list_as_row(FILENAME, ['ham', message])
+        print("successfully added message")
 
     else:
-        append_list_as_row(FILENAME, ['ham', message])
-    print("successfully added message")
+        print("message already in database!")
 
-delete_message("Ahhh")
+add_message("Hola wenhe,,,", 'spam')
