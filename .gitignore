@@ -10,5 +10,4 @@ env/
 test_spam.docx
 test_spam/
 test_spam.xlsx
-test_spam.csv
 translation.py
