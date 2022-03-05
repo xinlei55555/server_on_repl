@@ -6,4 +6,9 @@ pyproject.toml
 .replit
 __pycache__/
 tempCodeRunnerFile.py
-translating_database.py
+env/
+test_spam.docx
+test_spam/
+test_spam.xlsx
+test_spam.csv
+translation.py

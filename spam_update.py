@@ -53,8 +53,6 @@ def append_list_as_row(file_name, list_of_elem):
         csv_writer.writerow(list_of_elem)
 
 def delete_message(message):
-    df = pd.read_csv("spam_messages.csv")
-    
     #this line basically recreated a new dataframe, by using all tha value EXCEPT the row that had the value of message
     df = df[df.message != message]
 
@@ -75,18 +73,19 @@ def spam_update(message, analysed_rating):
 
 def add_message(message, verdict):
     #this creates another dataframe that says if the value is in the database
-    exists = df['message'].str.contains(message, case = False)
+    # exists = df['message'].str.contains(message, case = False)
+    # print(exists)
 
     #if the value is not in the database, it will add it
-    if True not in exists:
-        if str(verdict) == 'spam':
-            append_list_as_row(FILENAME, ['spam', message])
+    # if True in exists:
+    #     print("message already in database!")
 
-        else:
-            append_list_as_row(FILENAME, ['ham', message])
-        print("successfully added message")
+    # else:
+    if str(verdict) == 'spam':
+        append_list_as_row(FILENAME, ['spam', message])
 
     else:
-        print("message already in database!")
+        append_list_as_row(FILENAME, ['ham', message])
+    print("successfully added message")
 
-add_message("Hola wenhe,,,", 'spam')
+add_message("what, really^^^^ok this is weird!!!!", 'spam')
