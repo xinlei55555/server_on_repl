@@ -53,6 +53,7 @@ def append_list_as_row(file_name, list_of_elem):
         csv_writer.writerow(list_of_elem)
 
 def delete_message(message):
+    df = pd.read_csv("spam_messages.csv")
     #this line basically recreated a new dataframe, by using all tha value EXCEPT the row that had the value of message
     df = df[df.message != message]
 
