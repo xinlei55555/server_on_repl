@@ -26,18 +26,18 @@ def message_rating(message):
     final = Multi.predict(test_counts)
 
 #here i am rounding the value that we find to two vales after the comma
-    chances = round((float(Multi.predict_proba(test_counts)[0][1]*100)),2)
+    chances = round((float(Multi.predict_proba(test_counts)[0][1]*100)),5)
 
     #print(final,type(final),chances,type(chances))
 
 #Prediction is numpy array, another conditionnal to return a string
 
     if final == 'spam':
-        return_statement = chances
+        return_statement = str(chances) + "%"
         final_arg = 'spam'
     else:
         # return_statement = 'This message is not spam.-This message has a probability of {0}% of being spam.'.format(chances)
-        return_statement = chances
+        return_statement = str(chances) + "%"
         final_arg = 'ham'
 
 #I removed the spam update program. I'll put later to see if it works on Android:

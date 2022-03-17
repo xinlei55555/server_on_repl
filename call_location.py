@@ -69,7 +69,7 @@ def call_location(number):
     number_of_times_the_number_was_marked = search_number(number)
     if number_of_times_the_number_was_marked != 0:
         if location:
-            return [number + " is from " + location + '. ' + "This number has been previously marked spam by " + str(number_of_times_the_number_was_marked) + ' users.', 'spam']
+            return ["Caller's Location: " + location + '. ' + "This number has been previously marked spam by " + str(number_of_times_the_number_was_marked) + ' users.', 'spam']
         return [number + " has been previously marked spam by " + str(number_of_times_the_number_was_marked) + ' users.', ' spam']
 
     else:
