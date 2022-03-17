@@ -67,14 +67,11 @@ def call_location(number):
 
 #these return the good thing based on if the number was marked spam or nah
     number_of_times_the_number_was_marked = search_number(number)
-    if number_of_times_the_number_was_marked != 0:
-        if location:
-            return ["Caller's Location: " + location + '. ' + "This number has been previously marked spam by " + str(number_of_times_the_number_was_marked) + ' users.', 'spam']
-        return [number + " has been previously marked spam by " + str(number_of_times_the_number_was_marked) + ' users.', ' spam']
+    if location:
+  #returning [location, number_of_times]
+        return [location, str(number_of_times_the_number_was_marked)]
 
     else:
-        if location:
-            return [number + " is from " + location + '.', 'ham']
-        return ["Cannot find the location.", '']
+        return ["Unknown", str(number_of_times_the_number_was_marked)]
 
 #print(call_location("1999999990"))

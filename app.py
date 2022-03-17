@@ -37,14 +37,13 @@ def send_number():
   number = request.args.get('number') #between () is name of variable
   result = call_location(number)    #call location returns a list with title being result, rating being ham, spam or empty string
   print(result)
-  if result[1] == 'spam':
+  #result[1] is the number of users that have already marked the number as spam!
+  if int(result[1]) != 0:
     code = 2
-  elif result[1] == 'ham':
-    code = 1
+  #number was never marked
   else:
-    code = 0
-    
-  send_number = {'message_num': result[0], 'rating_num': code}
+    code = 1
+  send_number = {'message_num': result[0], 'rating_num': code, 'was_marked': result[1]}
   return jsonify(send_number)
 
 #this gives the rating of the message that was passed (spam or ham)
@@ -57,12 +56,12 @@ def send_message():
   result_num = call_location(number) 
   result_sms = message_rating(sms)
 
-  if result_num[1] == 'spam':
+  #number was already marked, so spam
+  if int(result_num[1]) != 0:
     code_num = 2
-  elif result_num[1] == 'ham':
-    code_num = 1
+  #number was never marked
   else:
-    code_num = 0
+    code_num = 1
 
   if result_sms[1] == 'spam':
     code_sms = 2
@@ -71,7 +70,7 @@ def send_message():
   else:
     code_sms = 0
 
-  send_message = {'message_num': result_num[0], 'rating_num': code_num, 'message_sms': result_sms[0], 'rating_sms': code_sms}
+  send_message = {'message_num': result_num[0], 'rating_num': code_num, 'message_sms': result_sms[0], 'rating_sms': code_sms, 'was_marked': result[1]}
   return jsonify(send_message)
 
 #this should be used to add a message if the app got the prediction right
