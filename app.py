@@ -14,7 +14,9 @@ from add_number import add_num
 from spam_update import add_message, spam_update
 from sms_testing import message_rating
 #from search_number import search_number
+from speechrecord import recognize
 
+recognize()
 #FOR RATING: 3 possibilities: spam, ham, empty string
 #empty string = cannot find location or invalid number, dont return any icon in flutter
 #for flutter: verify sender's number with phonenumber call_location module
