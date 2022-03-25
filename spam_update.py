@@ -73,20 +73,16 @@ def spam_update(message, analysed_rating):
     print("successfully added message and corrected error")
 
 def add_message(message, verdict):
-    #this creates another dataframe that says if the value is in the database
-    # exists = df['message'].str.contains(message, case = False)
-    # print(exists)
+    #this creates another dataframe, if the dataframe has a value, this means that the value has already appeared in the spam_messages.csv file, and i will thus not add it
+    df2 = df[df.message == message]
+    print(df2.head())
+    if len(df2.index) == 0:
+        if str(verdict) == 'spam':
+            append_list_as_row(FILENAME, ['spam', message])
 
-    #if the value is not in the database, it will add it
-    # if True in exists:
-    #     print("message already in database!")
-
-    # else:
-    
-    if str(verdict) == 'spam':
-        append_list_as_row(FILENAME, ['spam', message])
+        else:
+            append_list_as_row(FILENAME, ['ham', message])
+        print("successfully added message")
 
     else:
-        append_list_as_row(FILENAME, ['ham', message])
-    print("successfully added message")
-
+        print("this message has already appeared in the database!")
