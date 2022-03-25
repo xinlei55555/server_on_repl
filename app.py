@@ -45,7 +45,7 @@ def send_number():
   #number was never marked
   else:
     code = 1
-  send_number = {'message_num': result[0], 'rating_num': code, 'was_marked': result[1]}
+  send_number = {'message_num': result[0], 'rating_num': code, 'was_marked': int(result[1])}
   return jsonify(send_number)
 
 #this gives the rating of the message that was passed (spam or ham)
@@ -72,7 +72,7 @@ def send_message():
   else:
     code_sms = 0
 
-  send_message = {'message_num': result_num[0], 'rating_num': code_num, 'message_sms': result_sms[0], 'rating_sms': code_sms, 'was_marked': result[1]}
+  send_message = {'message_num': result_num[0], 'rating_num': code_num, 'message_sms': result_sms[0], 'rating_sms': code_sms, 'was_marked': int(result_num[1])}
   return jsonify(send_message)
 
 #this should be used to add a message if the app got the prediction right

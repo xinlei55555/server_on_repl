@@ -6,6 +6,9 @@ from search_number import search_number
 
 def call_location(number):
     number = str(number)
+    if(number.find("FormatException") != -1):
+      num = "Unknown number"
+      
     if '+' in number:
         num = number
     else:

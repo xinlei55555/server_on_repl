@@ -82,6 +82,7 @@ def add_message(message, verdict):
     #     print("message already in database!")
 
     # else:
+    
     if str(verdict) == 'spam':
         append_list_as_row(FILENAME, ['spam', message])
 
@@ -89,4 +90,3 @@ def add_message(message, verdict):
         append_list_as_row(FILENAME, ['ham', message])
     print("successfully added message")
 
-add_message("what, really^^^^ok this is weird!!!!", 'spam')
