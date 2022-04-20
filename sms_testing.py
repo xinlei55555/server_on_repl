@@ -17,7 +17,7 @@ def message_rating(message):
     #create a dictionary with value of position of word
 
   #here, i transformed the dataframe into a numpy array, using a lambda function -- as the fit_transfrom function only accepts a numpy array, somehow worked until now...
-    transformed_message_train = model.fit_transform(message_train.apply(lambda x: np.str_(x)))
+    transformed_message_train = model.fit_transform(message_train)
     #create a matrix with frequency of a word and the word
 
     Multi = MultinomialNB()
@@ -29,8 +29,8 @@ def message_rating(message):
 
 #here i am rounding the value that we find to two vales after the comma
     chances = round((float(Multi.predict_proba(test_counts)[0][1]*100)),5)
-
-    #print(final,type(final),chances,type(chances))
+  
+    print(final,type(final),chances,type(chances))
 
 #Prediction is numpy array, another conditionnal to return a string
 
@@ -44,7 +44,7 @@ def message_rating(message):
 
 #I removed the spam update program. I'll put later to see if it works on Android:
 #If we export as APK, then we must export the database of spam messages for Bayes.
-
+   
     return [str(return_statement), final_arg]
 
 #print(message_rating("why"))
