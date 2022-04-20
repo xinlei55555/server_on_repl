@@ -2,6 +2,7 @@
 import pandas as pd
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.naive_bayes import MultinomialNB
+import numpy as np
 
 def message_rating(message):
     df = pd.read_csv('spam_messages.csv')
@@ -15,7 +16,8 @@ def message_rating(message):
     model = CountVectorizer()
     #create a dictionary with value of position of word
 
-    transformed_message_train = model.fit_transform(message_train)
+  #here, i transformed the dataframe into a numpy array, using a lambda function -- as the fit_transfrom function only accepts a numpy array, somehow worked until now...
+    transformed_message_train = model.fit_transform(message_train.apply(lambda x: np.str_(x)))
     #create a matrix with frequency of a word and the word
 
     Multi = MultinomialNB()
