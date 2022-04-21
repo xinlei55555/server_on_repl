@@ -58,7 +58,7 @@ def send_message():
   result_sms = message_rating(sms)
 
   #number was already marked, so spam
-  if result_num[1] != 0:
+  if int(result_num[1]) != 0:
     code_num = 2
   #number was never marked
   else:
